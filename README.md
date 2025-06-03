@@ -1,6 +1,6 @@
 # Project Website
 
-This is the repository that contains source code for the [SViMo website](https://levondang.github.io/SViMo_project).
+This is the repository that contains source code for the [SViMo website](https://Droliven.github.io/SViMo_project).
 
 If you find Nerfies useful for your work please cite:
 ```

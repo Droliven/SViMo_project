@@ -4,11 +4,14 @@ This is the repository that contains source code for the [SViMo website](https:/
 
 If you find Nerfies useful for your work please cite:
 ```
-@article{xx
-  author    = {xx},
-  title     = {xx},
-  journal   = {xx},
-  year      = {xx},
+@misc{dang2025svimosynchronizeddiffusionvideo,
+      title={SViMo: Synchronized Diffusion for Video and Motion Generation in Hand-object Interaction Scenarios}, 
+      author={Lingwei Dang and Ruizhi Shao and Hongwen Zhang and Wei Min and Yebin Liu and Qingyao Wu},
+      year={2025},
+      eprint={2506.02444},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2506.02444}, 
 }
 ```
 

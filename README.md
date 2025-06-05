@@ -9,7 +9,7 @@
 - PDF: [https://arxiv.org/pdf/2506.02444](https://arxiv.org/pdf/2506.02444).
 - HF Paper page: [https://huggingface.co/papers/2506.02444](https://huggingface.co/papers/2506.02444).
 - Video demonstration: [https://www.youtube.com/watch?v=pVkntn-8KHo](https://www.youtube.com/watch?v=pVkntn-8KHo).
-- Code: Coming soon.
+- Code: [https://github.com/Droliven/SViMo_code](https://github.com/Droliven/SViMo_code).
 - Models: Coming soon.
 - Dataset: Coming soon.
 

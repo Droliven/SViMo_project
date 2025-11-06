@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- 元信息，不显示 -->
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A novel framework that combines visual priors and dynamic constraints within a synchronized diffusion process for HOI video and motion generation.">
+  <meta name="keywords" content="hand-object interaction, synchronized diffusion, visual prior, motion dynamic">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SViMo: Synchronized Diffusion for Video and Motion Generation in Hand-object Interaction Scenarios</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+<!-- 顶部导航条 -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://Droliven.github.io/me/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/Droliven/MSRGCN">
+            MSR-GCN
+          </a>
+          <a class="navbar-item" href="https://github.com/Droliven/diverse_sampling">
+            DiverseSamp
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SViMo: Synchronized Diffusion for Video and Motion Generation in Hand-object Interaction Scenarios</h1>
+          <h2 class="title is-4">NeurIPS 2025 (Spotlight)</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Droliven.github.io/me/">Lingwei Dang</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://dsaurus.github.io/saurus/">Ruizhi Shao</a><sup>2*</sup>,</span>
+            <span class="author-block">
+              <a href="https://zhanghongwen.cn/">Hongwen Zhang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Wei MIN</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.liuyebin.com/index.html">Yebin Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=n6e_2IgAAAAJ">Qingyao Wu
+              </a><sup>1#</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>School of Software Engineering, South China University of Technology</span>
+            <br>
+            <span class="author-block"><sup>2</sup>Department of Automation, Tsinghua University</span>
+            <br>
+            <span class="author-block"><sup>3</sup>School of Artificial Intelligence, Beijing Normal University</span>
+            <br>
+            <span class="author-block"><sup>4</sup>Shadow AI</span>
+<!--             <span class="eql-cntrb"><small><br><sup>*</sup>Equal contributions.</small></span> -->
+<!--             <span class="eql-cntrb"><small><br><sup>†</sup>Corresponding author.</small></span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="static/pdfs/SViMo_Camera_Ready.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2506.02444"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/H1ISaXiiKtk"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Droliven/SViMo_code/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Poster Link.-->
+              <span class="link-block">
+                <a href="./static/images/svimo_poster.png"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+              <!-- Slides Link.-->
+              <span class="link-block">
+                <a href="static/pdfs/svimo_slides.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Slides</span>
+                </a>
+              </span> 
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser Image -->
+<section class="hero teaser teaser-top-padding">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser_v2.png" id="tree" alt="Teaser image" width="100%" height="120%">
+      <div style="width: 100%; margin: auto;">
+        <p class="subtitle has-text-centered teaser-caption-margin" style="font-size:1.05em;">
+          <strong>Different HOI generation methods.</strong>
+        Approaches like <a href="https://guytevet.github.io/mdm-page/">MDM</a> rely on limited mocap data without visual guidance, resulting in blurred boundaries and compromised plausibility and consistency.
+        Methods like <a href="https://humanaigc.github.io/animate-anyone/">Animate Anyone</a> leverage large-scale visual priors but exhibit distortions and inconsistencies because of inadequate physical awareness.
+        Our method marries visual priors with 3D motion constraints and eliminates dependency on pre-defined object models or pose guidance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser image -->
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- <gradio-app
+      src="http://101.230.144.196:7810"
+      eager="true"
+    ></gradio-app> -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Hand-Object Interaction (HOI) generation has significant application potential. However, current 3D HOI motion generation approaches heavily rely on predefined 3D object models and lab-captured motion data, limiting generalization capabilities. Meanwhile, HOI video generation methods prioritize pixel-level visual fidelity, often sacrificing physical plausibility. 
+            Recognizing that visual appearance and motion patterns share fundamental physical laws in the real world, we propose a novel framework that combines visual priors and dynamic constraints within a synchronized diffusion process to generate the HOI video and motion simultaneously. To integrate the heterogeneous semantics, appearance, and motion features, our method implements tri-modal adaptive modulation for feature aligning, coupled with 3D full-attention for modeling inter- and intra-modal dependencies. Furthermore, we introduce a vision-aware 3D interaction diffusion model that generates explicit 3D interaction sequences directly from the synchronized diffusion outputs, then feeds them back to establish a closed-loop feedback cycle. 
+            This architecture eliminates dependencies on predefined object models or explicit pose guidance while significantly enhancing video-motion consistency. Experimental results demonstrate our method's superiority over state-of-the-art approaches in generating high-fidelity, dynamically plausible HOI sequences, with notable generalization capabilities in unseen real-world scenarios. Project page at <a href=https://Droliven.github.io/SViMo_project>https://Droliven.github.io/SViMo_project</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <!-- Paper video. -->
+    <div class="container is-max-desktop">
+      <div class="column is-centered has-text-centered">
+        <h2 class="title is-4">Video</h2>
+        <div class="publication-video">
+          <!-- <iframe src="https://youtu.be/H1ISaXiiKtk" -->
+          <iframe src="static/videos/svimo_video.mp4"
+              frameborder="0" encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<!-- =================================================== -->
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Overall Architecture</h2>
+        <div class="content has-text-justified">
+          <!-- <p>Here we show some results in the paper. More vivid animation results are provided in the <a href="https://youtu.be/pVkntn-8KHo">video</a> above.</p> -->
+           <img src="static/images/pipeline_v2.png" id="tree" alt="Teaser image" width="100%">
+          <p>Our method comprises: (1) A synchronous diffusion model that jointly generates HOI videos and motions (Sec. 3.3). (2) A vision-aware interaction diffusion model that generates 3D hand pose trajectories and point clouds from the former's outputs (Sec. 3.4), then feeds them back into the synchronized denoising process to establish closed-loop optimization (Sec. 3.5).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =================================================== -->
+
+<section class="hero is-light is-big", style="margin-top: -35px">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <br>
+        <br>
+        <h2 class="title is-4">🔥Highlights</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-five-fifths">
+        <p style="font-size: 20px;">
+          1. A novel <b>synchronized diffusion model for joint HOI video and motion denoising</b>, effectively integrating <span style="color: rgb(176, 152, 31)">large-scale visual priors</span> with <span style="color: rgb(176, 152, 31)">motion dynamic constraints</span>.
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+          2. A <b>vision-aware 3D interaction diffusion</b> that generates explicit 3D interaction sequences, <span style="color: rgb(176, 152, 31)">forming a close-loop optimization pipeline</span> and <span style="color: rgb(176, 152, 31)"> enhancing video-motion consistency</span>.
+        </p>
+        <br>
+        <p style="font-size: 20px;">
+          3. Our method <b>generates HOI video and motion synchronously</b> <span style="color: rgb(176, 152, 31)">without requiring pre-defined poses or object models</span>. Experiment results demonstrate <span style="color: rgb(176, 152, 31)">superior visual quality, motion plausibility, and generalization capability</span> to unseen real-world data.
+        </p>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================== -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Experiment Results</h2>
+        <div class="content has-text-justified">
+          <!-- <p>Here we show some results in the paper. More vivid animation results are provided in the <a href="https://youtu.be/pVkntn-8KHo">video</a> above.</p> -->
+          <p>Here we show some results in the paper. More vivid animation results are provided in the <a href="static/videos/video_20306_v3.mp4">video</a> above.</p>
+          <p>For video generation, Our method benefits from the synchronized modeling of visual and dynamic, resulting in the better Overall score. 
+            As for motion generation, our approach not only preserves input condition effectiveness through a triple-modality adaptive modulation mechanism, but also enhances object point cloud consistency with low-level visual priors.</p>
+          <ol>
+            <li>
+              <strong>Qualitative comparison</strong>. 
+              <p> </p>
+              <img src="static/images/fig3.png" alt="MultiSPA benchmark" style="width:90%; margin:auto; display:block;">
+              <p> </p>
+              <img src="static/images/fig4.png" alt="MultiSPA benchmark" style="width:90%; margin:auto; display:block;">
+              <p> </p>
+            </li>
+            <li>
+              <strong>Quantitative evaluation and user study results</strong>. 
+              <p> </p>
+              <img src="static/images/table1.png" alt="MultiSPA benchmark" style="width:70%; margin:auto; display:block;">
+              <p> </p>
+              <img src="static/images/table2.png" alt="MultiSPA benchmark" style="width:44%; margin:auto; display:block;">
+              <p> </p>
+              <img src="static/images/fig5.png" alt="MultiSPA benchmark" style="width:90%; margin:auto; display:block;">
+              <p> </p>
+            </li>
+            <li>
+              <strong>Zero-shot Generalization on Real-world Data</strong>. 
+              <p> </p>
+              <img src="static/images/fig6.png" alt="MultiSPA benchmark" style="width:90%; margin:auto; display:block;">
+              <p> </p>
+            </li>
+        </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =================================================== -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{dang2025svimosynchronizeddiffusionvideo,
+      title={SViMo: Synchronized Diffusion for Video and Motion Generation in Hand-object Interaction Scenarios}, 
+      author={Lingwei Dang and Ruizhi Shao and Hongwen Zhang and Wei Min and Yebin Liu and Qingyao Wu},
+      year={2025},
+      eprint={2506.02444},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2506.02444}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
